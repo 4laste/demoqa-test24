@@ -30,7 +30,7 @@ public class CssXpathExamples {
         $(By.name("email")).setValue("some text");
 
         // <input type="email" class="inputtext login_form_input_box">
-        $("[calss=login_form_input_box]").setValue("some text");
+        $("[class=login_form_input_box]").setValue("some text");
         $(by("class", "login_form_input_box")).setValue("some text");
         $x("//*input[@class='inputtext'][@class='login_for_form_input_box'").setValue("some text");
         $("input.login_form_input_box").setValue("some text");

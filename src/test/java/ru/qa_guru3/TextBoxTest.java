@@ -6,8 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.files.DownloadActions.click;
 
 public class TextBoxTest {
     @BeforeAll
@@ -26,11 +28,15 @@ public class TextBoxTest {
         $("#userEmail").setValue("4laste@gmail.com"); //Вписываю Email
         $(By.id("genterWrapper")).$(byText("Male")).click();
         $("#userNumber").setValue("9857974787"); //Выставлю номер телефона
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(byText("May")).click();
-        $(".react-datepicker__year-select").click();
-        $(byText("1993")).click();
-        $(".react-datepicker__day--009").click();
+//        $("#dateOfBirthInput").click(); // Выбираю таблицу  с выбором даты
+//        $(".react-datepicker__month-select").click(); // Выбираю поле месяц
+//        $(byText("May")).click(); // Клик по нужному месяцу
+//        $(".react-datepicker__year-select").click(); // Выбираю поле год
+//        $(byText("1993")).click(); // Клик по нужному году
+//        $(".react-datepicker__day--009").click(); // Клик по нужному числу
+////        $(".css-2b097c-container").click();
+        $(".css-2b097c-container input").setValue("English").pressEnter();
+        $(By.id("hobbiesWrapper")).$(byText("Sports")).click();
+        $("#uploadPicture").uploadFromClasspath("Image.jpg");
     }
 }
