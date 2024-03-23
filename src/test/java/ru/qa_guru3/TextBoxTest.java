@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -28,15 +29,33 @@ public class TextBoxTest {
         $("#userEmail").setValue("4laste@gmail.com"); //Вписываю Email
         $(By.id("genterWrapper")).$(byText("Male")).click();
         $("#userNumber").setValue("9857974787"); //Выставлю номер телефона
-//        $("#dateOfBirthInput").click(); // Выбираю таблицу  с выбором даты
-//        $(".react-datepicker__month-select").click(); // Выбираю поле месяц
-//        $(byText("May")).click(); // Клик по нужному месяцу
-//        $(".react-datepicker__year-select").click(); // Выбираю поле год
-//        $(byText("1993")).click(); // Клик по нужному году
-//        $(".react-datepicker__day--009").click(); // Клик по нужному числу
-////        $(".css-2b097c-container").click();
-        $(".css-2b097c-container input").setValue("English").pressEnter();
-        $(By.id("hobbiesWrapper")).$(byText("Sports")).click();
-        $("#uploadPicture").uploadFromClasspath("Image.jpg");
+        $("#dateOfBirthInput").click(); // Выбираю таблицу  с выбором даты
+        $(".react-datepicker__month-select").click(); // Выбираю поле месяц
+        $(byText("May")).click(); // Клик по нужному месяцу
+        $(".react-datepicker__year-select").click(); // Выбираю поле год
+        $(byText("1993")).click(); // Клик по нужному году
+        $(".react-datepicker__day--009").shouldBe(visible).click();; // Клик по нужному числу
+        $(".css-2b097c-container").click();
+        $(".css-2b097c-container input").setValue("English").pressEnter(); //Выбираю subjects
+        $(By.id("hobbiesWrapper")).$(byText("Sports")).click(); // Выбираю одно хобби
+        $("#uploadPicture").uploadFromClasspath("Image.jpg"); // Загружаю картинку
+        $("#currentAddress").setValue("Govnyaevo street , 14/5 house , 23 apts.");
+        $("#state").click();
+        $(byText("Rajasthan")).shouldBe(visible).click();
+        $("#city").click();
+        $(byText("Jaipur")).click();
+        $("#submit").click();
+
+        $(".modal-dialog ").shouldBe(visible);
+        $(".modal-body").shouldHave(text("Pavel Nasonov"));
+        $(".modal-body").shouldHave(text("4laste@gmail.com"));
+        $(".modal-body").shouldHave(text("Male"));
+        $(".modal-body").shouldHave(text("9857974787"));
+        $(".modal-body").shouldHave(text("09 May 1993"));
+        $(".modal-body").shouldHave(text("Ebglish"));
+        $(".modal-body").shouldHave(text("Sports"));
+        $(".modal-body").shouldHave(text("Image.png"));
+        $(".modal-body").shouldHave(text("Govnyaevo street , 14/5 house , 23 apts."));
+        $(".modal-body").shouldHave(text("Rajasthan Jaipur"));
     }
 }
