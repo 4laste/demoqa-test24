@@ -31,9 +31,9 @@ public class TextBoxTest {
         $("#userNumber").setValue("9857974787"); //Выставлю номер телефона
         $("#dateOfBirthInput").click(); // Выбираю таблицу  с выбором даты
         $(".react-datepicker__month-select").click(); // Выбираю поле месяц
-        $(byText("May")).click(); // Клик по нужному месяцу
+        $(by("value", "4")).click(); //выбор года (исправлено)
         $(".react-datepicker__year-select").click(); // Выбираю поле год
-        $(byText("1993")).click(); // Клик по нужному году
+        $(by("value", "1993")).click(); //выбор года (исправлено) // Клик по нужному году
         $(".react-datepicker__day--009").shouldBe(visible).click();; // Клик по нужному числу
         $(".css-2b097c-container").click();
         $(".css-2b097c-container input").setValue("English").pressEnter(); //Выбираю subjects
@@ -41,9 +41,9 @@ public class TextBoxTest {
         $("#uploadPicture").uploadFromClasspath("Image.jpg"); // Загружаю картинку
         $("#currentAddress").setValue("Govnyaevo street , 14/5 house , 23 apts.");
         $("#state").click();
-        $(byText("Rajasthan")).shouldBe(visible).click();
+        $("#react-select-3-option-3").click();
         $("#city").click();
-        $(byText("Jaipur")).click();
+        $("#react-select-4-option-0").click();
         $("#submit").click();
 
         $(".modal-dialog ").shouldBe(visible);
